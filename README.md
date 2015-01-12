@@ -13,5 +13,5 @@ To build and run the project execute the following command:
 
     mvn spring-boot:run
 
-This will start up the server on http://localhost:8080/index.html (where you can choose between the $http and angular-data versions)
+This will start up the server on [http://localhost:8080/index.html] (where you can choose between the $http and angular-data versions)
 
