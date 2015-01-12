@@ -1,0 +1,53 @@
+<html ng-app="ngMeetup.angular-data">
+    <head>
+        <title>Angular Data Example - $http</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body ng-controller="TodoCtrl" class="container">
+        <h1>Todos</h1>
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-sm-6">
+                <label for="onlyPending">Show Only Open Tasks</label>
+                <input type="checkbox" id="onlyPending" ng-model="filter.dontShowDone">
+            </div>
+            <div class="col-sm-6">
+                <input type="text" ng-model="filter.task" placeholder="Filter by Task" style="width: 100%;">
+            </div>
+        </div>
+        <div class="row" style="margin-top: 25px;">
+            <table class="table">
+                <tr>
+                    <th>Done</th>
+                    <th>Task</th>
+                </tr>
+                <tr ng-repeat="todo in todos">
+                    <td class="col-sm-1">
+                        <input type="checkbox" ng-model="todo.done" ng-click="updateTodo(todo)">
+                    </td>
+                    <td ng-if="editing === undefined || editing.id !== todo.id">
+                        <button class="btn btn-xs btn-danger pull-right" ng-click="deleteTodo(todo)">Delete</button>
+                        <span ng-dblclick="edit(todo)">{{todo.task}}</span>
+                    </td>
+                    <td ng-if="editing.id === todo.id">
+                        <button style="margin-left:5px;" class="btn btn-xs btn-default pull-right" ng-click="cancelEdit()">Cancel</button>
+                        <button class="btn btn-xs btn-primary pull-right" ng-click="updateTodo(editing)">Save</button>
+                        <input type="text" style="width:85%" ng-model="editing.task" placeholder="New Task">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-1">&nbsp;</td>
+                    <td>
+                        <form name="new-task-form" ng-submit="createTodo()">
+                            <input type="text" style="width:100%" ng-model="newTask.name" placeholder="New Task">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

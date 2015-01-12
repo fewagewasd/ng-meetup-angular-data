@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.unterhofer.angular.data.model.Todo;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
-    public Page<Todo> findByDoneAndTaskContaining(Boolean done, String task, Pageable pageable);
+    public Page<Todo> findByDoneAndTaskContainingIgnoreCase(Boolean done, String task, Pageable pageable);
+    public Page<Todo> findByTaskContainingIgnoreCase(String s, Pageable pageable);
 }

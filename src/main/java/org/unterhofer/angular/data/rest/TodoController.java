@@ -1,13 +1,15 @@
 package org.unterhofer.angular.data.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.unterhofer.angular.data.model.Todo;
 import org.unterhofer.angular.data.repository.TodoRepository;
 import org.unterhofer.angular.data.rest.search.SearchUtil;
 import org.unterhofer.angular.data.rest.search.TodoSearchRequest;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/todos")
@@ -21,11 +23,11 @@ public class TodoController {
 
     @Transactional(readOnly = true)
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Page<Todo> find(TodoSearchRequest search) {
-        if(search.done != null || search.task != null) {
-            return todoRepository.findByDoneAndTaskContaining(search.done, search.task, SearchUtil.toPageable(search));
+    public List<Todo> find(TodoSearchRequest search) {
+        if(search.done != null) {
+            return todoRepository.findByDoneAndTaskContainingIgnoreCase(!search.done, Optional.ofNullable(search.task).orElse(""), SearchUtil.toPageable(search)).getContent();
         } else {
-            return todoRepository.findAll(SearchUtil.toPageable(search));
+            return todoRepository.findByTaskContainingIgnoreCase(Optional.ofNullable(search.task).orElse(""), SearchUtil.toPageable(search)).getContent();
         }
     }
 
