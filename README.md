@@ -15,3 +15,12 @@ To build and run the project execute the following command:
 
 This will start up the server on [http://localhost:8080/index.html] (where you can choose between the $http and angular-data versions)
 
+## Code Organization
+
+### Java
+
+The Java service is based on Spring Boot [https://github.com/spring-projects/spring-boot](Spring Boot) and provides a simple REST Endpoint for Todos.
+
+### Web
+
+Web source files are contained in src/main/resources/static. There is a folder for the $http version and a folder for the angular-data version of the Todos app.
