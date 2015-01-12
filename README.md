@@ -19,7 +19,7 @@ This will start up the server on [http://localhost:8080/index.html] (where you c
 
 ### Java
 
-The Java service is based on Spring Boot [https://github.com/spring-projects/spring-boot](Spring Boot) and provides a simple REST Endpoint for Todos.
+The Java service is based on [Spring Boot](https://github.com/spring-projects/spring-boot "Spring Boot") and provides a simple REST Endpoint for Todos.
 
 ### Web
 
