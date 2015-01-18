@@ -24,3 +24,7 @@ The Java service is based on [Spring Boot](https://github.com/spring-projects/sp
 ### Web
 
 Web source files are contained in src/main/resources/static. There is a folder for the $http version and a folder for the angular-data version of the Todos app.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/fewagewasd/ng-meetup-angular-data/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
